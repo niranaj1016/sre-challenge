@@ -1,0 +1,23 @@
+---
+driver:
+  name: docker
+  binary: docker
+
+provisioner:
+  name: chef_solo
+  remove_images: true
+
+platforms:
+  - name: ubuntu-14.04
+    driver_config:
+      image: ubuntu:14.04
+      platform: ubuntu
+      use_sudo: false
+
+suites:
+  - name: default
+    run_list:
+      - recipe[sre-challenge::iptables]
+      - recipe[sre-challenge::default]
+    attributes:
+
